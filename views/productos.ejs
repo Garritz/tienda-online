@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= titulo %></title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <h1 class="logo">🛍️ Tienda Online</h1>
+      <ul class="nav-links">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/productos" class="active">Productos</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h1><%= titulo %></h1>
+
+    <!-- Formulario para agregar productos -->
+    <section class="form-section">
+      <h2>Agregar Nuevo Producto</h2>
+      <form action="/productos/agregar" method="POST" class="product-form">
+        <div class="form-group">
+          <label for="nombre">Nombre del Producto:</label>
+          <input 
+            type="text" 
+            id="nombre" 
+            name="nombre" 
+            placeholder="Ej: Laptop Dell XPS 15"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="descripcion">Descripción:</label>
+          <textarea 
+            id="descripcion" 
+            name="descripcion" 
+            rows="3"
+            placeholder="Descripción detallada del producto..."
+            required
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="precio">Precio (USD):</label>
+          <input 
+            type="number" 
+            id="precio" 
+            name="precio" 
+            step="0.01"
+            min="0"
+            placeholder="0.00"
+            required
+          >
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+          ➕ Agregar Producto
+        </button>
+      </form>
+    </section>
+
+    <!-- Lista de productos -->
+    <section class="products-section">
+      <h2>Productos Disponibles (<%= productos.length %>)</h2>
+      
+      <% if (productos.length === 0) { %>
+        <div class="empty-state">
+          <div class="icon">📭</div>
+          <p>No hay productos disponibles todavía.</p>
+          <p class="subtitle">Usa el formulario de arriba para agregar tu primer producto.</p>
+        </div>
+      <% } else { %>
+        <div class="products-grid">
+          <% productos.forEach(producto => { %>
+            <div class="product-card">
+              <div class="product-header">
+                <h3><%= producto.nombre %></h3>
+                <span class="product-id">#<%= producto.id %></span>
+              </div>
+              
+              <div class="product-body">
+                <p class="description"><%= producto.descripcion %></p>
+              </div>
+              
+              <div class="product-footer">
+                <span class="price">$<%= producto.precio.toFixed(2) %></span>
+                <% if (producto.fechaCreacion) { %>
+                  <span class="date">
+                    Añadido: <%= new Date(producto.fechaCreacion).toLocaleDateString('es-ES') %>
+                  </span>
+                <% } %>
+              </div>
+            </div>
+          <% }); %>
+        </div>
+
+        <!-- Resumen de productos -->
+        <div class="summary">
+          <h3>Resumen</h3>
+          <p>Total de productos: <strong><%= productos.length %></strong></p>
+          <p>
+            Valor total del inventario: 
+            <strong>
+              $<%= productos.reduce((sum, p) => sum + p.precio, 0).toFixed(2) %>
+            </strong>
+          </p>
+        </div>
+      <% } %>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Tienda en Línea - Gestión de Productos</p>
+    </div>
+  </footer>
+</body>
+</html>

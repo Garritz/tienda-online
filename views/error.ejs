@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= titulo %></title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <h1 class="logo">🛍️ Tienda Online</h1>
+      <ul class="nav-links">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/productos">Productos</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="error-section">
+      <div class="error-code"><%= codigo %></div>
+      <h1><%= titulo %></h1>
+      <p class="error-message"><%= mensaje %></p>
+      
+      <% if (ruta) { %>
+        <p class="error-detail">Ruta solicitada: <code><%= ruta %></code></p>
+      <% } %>
+      
+      <% if (error) { %>
+        <div class="error-technical">
+          <h3>Información técnica:</h3>
+          <pre><%= error %></pre>
+        </div>
+      <% } %>
+
+      <div class="error-actions">
+        <a href="/" class="btn btn-primary">Volver al Inicio</a>
+        <a href="/productos" class="btn btn-secondary">Ver Productos</a>
+      </div>
+
+      <div class="error-help">
+        <h3>¿Necesitas ayuda?</h3>
+        <ul>
+          <li>Verifica que la URL esté correcta</li>
+          <li>Regresa a la <a href="/">página principal</a></li>
+          <li>Explora nuestros <a href="/productos">productos</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Tienda en Línea - Error <%= codigo %></p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= titulo %></title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <h1 class="logo">🛍️ Tienda Online</h1>
+      <ul class="nav-links">
+        <li><a href="/" class="active">Inicio</a></li>
+        <li><a href="/productos">Productos</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="hero">
+      <h1><%= titulo %></h1>
+      <p class="subtitle"><%= mensaje %></p>
+      
+      <div class="features">
+        <div class="feature-card">
+          <div class="icon">📦</div>
+          <h3>Gestión de Productos</h3>
+          <p>Administra tu inventario de manera fácil y eficiente</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="icon">💾</div>
+          <h3>Almacenamiento Persistente</h3>
+          <p>Tus datos se guardan de forma segura en archivos</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="icon">⚡</div>
+          <h3>Interfaz Rápida</h3>
+          <p>Diseño moderno y responsivo para mejor experiencia</p>
+        </div>
+      </div>
+
+      <div class="cta-buttons">
+        <a href="/productos" class="btn btn-primary">Ver Productos</a>
+        <a href="/productos" class="btn btn-secondary">Agregar Producto</a>
+      </div>
+    </section>
+
+    <section class="info-section">
+      <h2>Sobre este Proyecto</h2>
+      <p>
+        Este es un sistema de gestión de productos construido con <strong>Node.js</strong> y <strong>Express</strong>.
+        Permite agregar, visualizar y almacenar productos de forma persistente utilizando el sistema de archivos.
+      </p>
+      <p>
+        <strong>Tecnologías utilizadas:</strong>
+      </p>
+      <ul class="tech-list">
+        <li>Node.js - Entorno de ejecución</li>
+        <li>Express - Framework web</li>
+        <li>EJS - Motor de plantillas</li>
+        <li>File System (fs) - Persistencia de datos</li>
+        <li>Body-Parser - Procesamiento de formularios</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Tienda en Línea - Proyecto de Desarrollo Backend con Node.js</p>
+    </div>
+  </footer>
+</body>
+</html>
